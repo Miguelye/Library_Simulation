@@ -1,0 +1,6 @@
+﻿  Book.cpp
+  Main.cpp
+  Library.cpp
+  Generating Code...
+D:\My C++ Projetcs\Library\Library main\Library.cpp(48): warning C4715: 'Library::getBook': not all control paths return a value
+  Library main.vcxproj -> D:\My C++ Projetcs\Library\Library main\x64\Debug\Library main.exe
