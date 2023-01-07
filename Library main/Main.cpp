@@ -9,23 +9,21 @@ int main()
 {
 	Book b1, b2, b3;
 
-	b1.fill();
-	b2.fill();
+	b1.fill("Bible", "Jesus", "20");
+	b2.fill("Cien", "Gaby", "1973");
+	b3.fill("Illiad", "Homer", "400 AD");
 
 	Library library1(5);
 
-	cout << "Address of original (before) b1: " << &b1 << endl;
+	//cout << "Address of original (before) b1: " << &b1 << endl;
 
 	library1.addBook(&b1);
 	library1.addBook(&b2);
 	library1.addBook(&b3);
 
-	cout << "Address of original (after) b1: " << library1.getBook(1) << endl;
-
-	library1.getBook(2)->display();
+	//cout << "Address of original (after) b1: " << library1.getBook(1) << endl;
 
 	cout << endl;
 
 	library1.showBooks();
-	b1.display();
 }

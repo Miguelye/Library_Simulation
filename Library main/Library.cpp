@@ -1,32 +1,36 @@
 #include "Library.h"
 #include <iostream>
+#include <limits>
 
 using namespace std;
+
 
 int Library::currentAmountOfBooks = 0;
 
 Library::Library()
 {
+	this->bookChoice = -1;
 	this->maxAmountOfBooks = 5;
 	static int i = 0;
-	cout << "Library Constructor invoked " << ++i << " times." << endl;
+	//cout << "Library Constructor invoked " << ++i << " times." << endl;
 	this->pbooks = new Book * [this->maxAmountOfBooks];
 	cout << "dynamically allocated array of: " << this->maxAmountOfBooks << " times." << endl;
 }
 
 Library::Library(int maxAmountOfBooks)
 {
-	static int i = 0;
+	this->bookChoice = -1;
+	//static int i = 0;
 	this->maxAmountOfBooks = maxAmountOfBooks;
-	cout << "Library Constructor invoked " << ++i << endl;
+	//cout << "Library Constructor invoked " << ++i << endl;
 	this->pbooks = new Book * [this->maxAmountOfBooks];
 	cout << "dynamically allocated array of: " << this->maxAmountOfBooks << " times." << endl;
 }
 
 Library::~Library()
 {
-	static int i = 0;
-	cout << "Library Destructor invoked " << ++i << " times." << endl;
+	//static int i = 0;
+	//cout << "Library Destructor invoked " << ++i << " times." << endl;
 	delete[] pbooks;
 }
 
@@ -45,31 +49,76 @@ Book* Library::getBook()
 {
 	if (pbooks[0])
 		return pbooks[0];
+	else
+	{
+		cout << "No books availables." << endl;
+		return 0;
+	}
 }
 
 Book* Library::getBook(int index)
 {
-	bool isBookValid = index > currentAmountOfBooks || index <= 0;
+	bool isBookValid = index > currentAmountOfBooks-1 || index < 0;
 	while (isBookValid)
 	{
-		char ch;
-		cout << "ERROR: Invalid input." << endl;
-		cout << "Please enter number again or press Q to quit." << endl;
-		cin >> ch;
-		if (ch == 'Q' || 'q')
+		system("cls");
+		string choice;
+		do
 		{
-			return 0;
-		}
+			Library::showBooks();
+
+			cout << "ERROR: Invalid input." << endl;
+			cout << "Please enter number again or press Q to quit." << endl << endl;
+
+			cin >> choice;
+			if (choice == "Q" || "q")
+			{
+				return nullptr;
+			}
+
+			int i = stoi(choice);
+			if (i < currentAmountOfBooks - 1 || i > 0)
+			{
+
+			}
+		} while (!isValid("Please enter number again or press Q to quit."));
 
 	}
-	return pbooks[index - 1];
+	return pbooks[index];
 }
 
 void Library::showBooks()
 {
-	for (size_t i = 0; i < currentAmountOfBooks; i++)
+	bool tmpBool;
+	do
 	{
-		cout << "index: " << i << " - ";
-		(pbooks[i]->display());
+		cout << "Welcome to Condor's Library" << endl;
+		cout << "The availables books are:" << endl << endl;
+
+		for (size_t i = 0; i < currentAmountOfBooks; i++)
+		{
+			cout << "index: " << i << " - ";
+			(pbooks[i]->display());
+		}
+
+		cout << "would you like to pick a book? " << endl;
+		cin >> bookChoice;
+		tmpBool = !isValid("Please try again: ");
+	} while (tmpBool);
+
+
+	this->getBook(bookChoice)->display();
+}
+
+bool Library::isValid(string errorMessage)
+{
+	if (cin.fail())
+	{
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "ERROR: Invalid input." << endl;
+		cout << errorMessage << endl << endl;
+		return false;
 	}
+	return true;
 }

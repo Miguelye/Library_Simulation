@@ -1,5 +1,6 @@
 #pragma once
 #include "Book.h"
+#include "validations.h"
 
 class Library
 {
@@ -16,4 +17,6 @@ public:
 private:
 	Book** pbooks;
 	int maxAmountOfBooks;
+	int bookChoice;
+	bool isValid(string);
 };

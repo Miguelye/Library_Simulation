@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int Book::bookID = 0;
+int Book::counter = 0;
 
 void Book::fill()
 {
@@ -12,25 +12,35 @@ void Book::fill()
 	cout << "Enter Author : " << endl;
 	cin >> author;
 	cout << "Enter Year : " << endl;
-	cin >> Year;
+	cin >> year;
+}
+
+void Book::fill(string title, string author, string year)
+{
+	this->title = title;
+	this->author = author;
+	this->year = year;
 }
 
 void Book::display()
 {
-	cout << "Title: '" << title << "' Author: '" << author << "' Year: '" << Year << "'" << endl;
+	cout << "Title: '" << title << "' Author: '" << author << "' Year: '" << year << "'" << " BookID: '" << bookID << "'" << endl;
+	
 }
 
 Book::Book()
 {
-	static int i = 0;
-	cout << "Book constructor invoked: " << ++i << " times" << endl;
+	counter++;
+	bookID = counter;
+	//static int i = 0;
+	//cout << "Book constructor invoked: " << ++i << " times" << endl;
 	title = "Null";
 	author = "Null";
-	Year = "Null";
+	year = "Null";
 }
 
 Book::~Book()
 {
-	static int i = 0;
-	cout << "Book Destructor invoked: " << ++i << " times" << endl;
+	//static int i = 0;
+	//cout << "Book Destructor invoked: " << ++i << " times" << endl;
 }
