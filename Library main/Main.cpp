@@ -23,7 +23,7 @@ int main()
 
 	//cout << "Address of original (after) b1: " << library1.getBook(1) << endl;
 
-	cout << endl;
+	cout << endl << endl;
 
 	library1.showBooks();
 
