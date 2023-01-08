@@ -27,9 +27,7 @@ int main()
 
 	library1.showBooks();
 
-	cout << Book::getCounter() << endl;
-	cout << b1.getCounter() << endl;
-
+	cout << "Hola" << endl;
 	/*int index;
 	cout << "would you like to pick a book? " << endl;
 	cin >> index;
