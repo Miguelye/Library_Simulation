@@ -26,4 +26,9 @@ int main()
 	cout << endl;
 
 	library1.showBooks();
+
+	int index;
+	cout << "would you like to pick a book? " << endl;
+	cin >> index;
+	library1.getBook(index)->display();
 }
