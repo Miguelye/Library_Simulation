@@ -14,10 +14,9 @@ private:
 
 public:
 	Book();
+	Book(string, string, string);
 	~Book();
-	void fill();
-	void fill(string, string, string);
-	void display();
-	int getBookID(){ return bookID; }
-	static int getCounter(){ return counter; }
+	void display() const;
+	int getBookID() const;
+	static int getCounter();
 };

@@ -7,11 +7,9 @@ using namespace std;
 
 int main()
 {
-	Book b1, b2, b3;
-
-	b1.fill("Bible", "Jesus", "20");
-	b2.fill("Cien", "Gaby", "1973");
-	b3.fill("Illiad", "Homer", "400 AD");
+	Book const b1("Bible", "Jesus", "20");
+	Book const b2("Cien", "Gaby", "1973");
+	Book const b3("Illiad", "Homer", "400 AD");
 
 	Library library1(5);
 

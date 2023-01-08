@@ -4,9 +4,12 @@
 using namespace std;
 
 int Book::counter = 0;
-
-void Book::fill()
+Book::Book()
 {
+	counter++;
+	bookID = counter;
+	//static int i = 0;
+	//cout << "Book constructor invoked: " << ++i << " times" << endl;
 	cout << "Enter Title : " << endl;
 	cin >> title;
 	cout << "Enter Author : " << endl;
@@ -15,32 +18,35 @@ void Book::fill()
 	cin >> year;
 }
 
-void Book::fill(string title, string author, string year)
-{
-	this->title = title;
-	this->author = author;
-	this->year = year;
-}
-
-void Book::display()
-{
-	cout << "Title: '" << title << "' Author: '" << author << "' Year: '" << year << "'" << " BookID: '" << bookID << "'" << endl;
-	
-}
-
-Book::Book()
+Book::Book(string title, string author, string year)
 {
 	counter++;
 	bookID = counter;
 	//static int i = 0;
 	//cout << "Book constructor invoked: " << ++i << " times" << endl;
-	title = "Null";
-	author = "Null";
-	year = "Null";
+	this->title = title;
+	this->author = author;
+	this->year = year;
 }
 
 Book::~Book()
 {
 	//static int i = 0;
 	//cout << "Book Destructor invoked: " << ++i << " times" << endl;
+}
+
+void Book::display() const
+{
+	cout << "Title: '" << title << "' Author: '" << author << "' Year: '" << year << "'" << " BookID: '" << bookID << "'" << endl;
+	
+}
+
+int Book::getBookID() const
+{
+	return bookID;
+}
+
+int Book::getCounter()
+{ 
+	return counter; 
 }

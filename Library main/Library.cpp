@@ -13,7 +13,7 @@ Library::Library()
 	this->maxAmountOfBooks = 5;
 	static int i = 0;
 	//cout << "Library Constructor invoked " << ++i << " times." << endl;
-	this->pbooks = new Book * [this->maxAmountOfBooks];
+	this->pbooks = new const Book  * [this->maxAmountOfBooks];
 	cout << "dynamically allocated array of: " << this->maxAmountOfBooks << " times." << endl;
 }
 
@@ -23,7 +23,7 @@ Library::Library(int maxAmountOfBooks)
 	//static int i = 0;
 	this->maxAmountOfBooks = maxAmountOfBooks;
 	//cout << "Library Constructor invoked " << ++i << endl;
-	this->pbooks = new Book * [this->maxAmountOfBooks];
+	this->pbooks = new const Book * [this->maxAmountOfBooks];
 	cout << "dynamically allocated array of: " << this->maxAmountOfBooks << " times." << endl;
 }
 
@@ -34,7 +34,7 @@ Library::~Library()
 	delete[] pbooks;
 }
 
-void Library::addBook(Book* book)
+void Library::addBook(const Book* book)
 {
 	if (currentAmountOfBooks == maxAmountOfBooks - 1)
 	{
@@ -45,7 +45,7 @@ void Library::addBook(Book* book)
 	currentAmountOfBooks++;
 }
 
-Book* Library::getBook()
+const Book* Library::getBook()
 {
 	if (pbooks[0])
 		return pbooks[0];
@@ -56,7 +56,7 @@ Book* Library::getBook()
 	}
 }
 
-Book* Library::getBook(int index)
+const Book* Library::getBook(int index)
 {
 	while (!isValid("ERROR: Invalid input."))
 	{

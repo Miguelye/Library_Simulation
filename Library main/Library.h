@@ -9,13 +9,13 @@ public:
 	Library();
 	Library(int);
 	~Library();
-	void addBook(Book*);
-	Book* getBook();
-	Book* getBook(int);
+	void addBook(const Book*);
+	const Book* getBook();
+	const Book* getBook(int);
 	void showBooks();
 
 private:
-	Book** pbooks;
+	const Book** pbooks;
 	int maxAmountOfBooks;
 	int bookChoice;
 	bool isValid(string);
