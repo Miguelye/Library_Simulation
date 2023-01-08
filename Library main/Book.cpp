@@ -7,7 +7,8 @@ int Book::counter = 0;
 
 Book::Book()
 {
-	counter++;
+	bookID = NULL;
+	++counter;
 	//static int i = 0;
 	//cout << "Book constructor invoked: " << ++i << " times" << endl;
 	cout << "Enter Title : " << endl;
@@ -18,8 +19,17 @@ Book::Book()
 	cin >> year;
 }
 
+Book::Book(const Book& obj)
+{
+	this->title = obj.title;
+	this->author = obj.author;
+	this->year = obj.year;
+	++counter;
+}
+
 Book::Book(string title, string author, string year)
 {
+	bookID = NULL;
 	counter++;
 	//static int i = 0;
 	//cout << "Book constructor invoked: " << ++i << " times" << endl;

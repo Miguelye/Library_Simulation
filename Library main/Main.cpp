@@ -10,6 +10,7 @@ int main()
 	Book const b1("Bible", "Jesus", "20");
 	Book const b2("Cien", "Gaby", "1973");
 	Book const b3("Illiad", "Homer", "400 AD");
+	Book const b4 = b1;
 
 	Library library1(5);
 
@@ -18,6 +19,7 @@ int main()
 	library1.addBook(&b1);
 	library1.addBook(&b2);
 	library1.addBook(&b3);
+	library1.addBook(&b4);
 
 	//cout << "Address of original (after) b1: " << library1.getBook(1) << endl;
 
@@ -25,8 +27,11 @@ int main()
 
 	library1.showBooks();
 
-	int index;
+	cout << Book::getCounter() << endl;
+	cout << b1.getCounter() << endl;
+
+	/*int index;
 	cout << "would you like to pick a book? " << endl;
 	cin >> index;
-	library1.getBook(index)->display();
+	library1.getBook(index)->display();*/
 }

@@ -15,9 +15,10 @@ private:
 	void setCounter() const;
 
 public:
-	Book();
-	Book(string, string, string);
-	~Book();
+	Book();							//Constructor
+	Book(const Book & obj);							//Copy Constructor
+	Book(string, string, string);	//Overload Constructor
+	~Book();						//Destructor
 	void display() const;
 	int getBookID() const;
 	static int getCounter();
