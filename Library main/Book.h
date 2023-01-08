@@ -9,8 +9,10 @@ private:
 	string title;
 	string author;
 	string year;
-	int bookID;
+	mutable int bookID;
 	static int counter;
+	void setBookID() const;
+	void setCounter() const;
 
 public:
 	Book();
@@ -19,4 +21,6 @@ public:
 	void display() const;
 	int getBookID() const;
 	static int getCounter();
+
+	friend class Library;
 };

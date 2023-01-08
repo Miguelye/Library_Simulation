@@ -43,6 +43,8 @@ void Library::addBook(const Book* book)
 	}
 	pbooks[currentAmountOfBooks] = book;
 	currentAmountOfBooks++;
+	book->bookID = currentAmountOfBooks;
+	
 }
 
 const Book* Library::getBook()
