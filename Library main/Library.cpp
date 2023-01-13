@@ -4,27 +4,28 @@
 
 using namespace std;
 
-
-int Library::currentAmountOfBooks = 0;
-
 Library::Library()
 {
 	this->bookChoice = -1;
+	this->currentAmountOfBooks = 0;
 	this->maxAmountOfBooks = 5;
-	static int i = 0;
+	this->pbooks = new const Book * [this->maxAmountOfBooks];
+
+	//static int i = 0;
 	//cout << "Library Constructor invoked " << ++i << " times." << endl;
-	this->pbooks = new const Book  * [this->maxAmountOfBooks];
-	cout << "dynamically allocated array of: " << this->maxAmountOfBooks << " times." << endl;
+	//cout << "dynamically allocated array of: " << this->maxAmountOfBooks << " times." << endl;
 }
 
 Library::Library(int maxAmountOfBooks)
 {
 	this->bookChoice = -1;
-	//static int i = 0;
+	this->currentAmountOfBooks = 0;
 	this->maxAmountOfBooks = maxAmountOfBooks;
-	//cout << "Library Constructor invoked " << ++i << endl;
 	this->pbooks = new const Book * [this->maxAmountOfBooks];
-	cout << "dynamically allocated array of: " << this->maxAmountOfBooks << " times." << endl;
+
+	//static int i = 0;
+	//cout << "Library Constructor invoked " << ++i << endl;
+	//cout << "dynamically allocated array of: " << this->maxAmountOfBooks << " times." << endl;
 }
 
 Library::~Library()
@@ -44,13 +45,14 @@ void Library::addBook(const Book* book)
 	pbooks[currentAmountOfBooks] = book;
 	currentAmountOfBooks++;
 	book->bookID = currentAmountOfBooks;
-	
 }
 
 const Book* Library::getBook()
 {
-	if (pbooks[0])
+	if (currentAmountOfBooks >= 0)
+	{
 		return pbooks[0];
+	}
 	else
 	{
 		cout << "No books availables." << endl;
@@ -81,13 +83,20 @@ const Book* Library::getBook(int index)
 
 void Library::showBooks()
 {
-	cout << "Welcome to Condor's Library" << endl;
-	cout << "The availables books are:" << endl << endl;
-
-	for (size_t i = 0; i < currentAmountOfBooks; i++)
+	if (currentAmountOfBooks == 0)
 	{
-		cout << "index: " << i << " - ";
-		(pbooks[i]->display());
+		cout << "No Books Availables" << endl;
+	}
+	else
+	{
+		cout << "Welcome to Condor's Library" << endl;
+		cout << "The availables books are:" << endl << endl;
+
+		for (size_t i = 0; i < currentAmountOfBooks; i++)
+		{
+			cout << "index: " << i << " - ";
+			(pbooks[i]->display());
+		}
 	}
 }
 

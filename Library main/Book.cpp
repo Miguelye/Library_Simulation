@@ -21,9 +21,9 @@ Book::Book()
 
 Book::Book(const Book& obj)
 {
-	this->title = obj.title;
+	this->title	 = obj.title;
 	this->author = obj.author;
-	this->year = obj.year;
+	this->year   = obj.year;
 	++counter;
 }
 
@@ -55,9 +55,9 @@ int Book::getBookID() const
 	return bookID;
 }
 
-int Book::getCounter()
+int Book::getCounter() //There is no need on definition to use the static key word. only on declaration
 { 
-	return counter; 
+	return counter;
 }
 
 void Book::setBookID() const

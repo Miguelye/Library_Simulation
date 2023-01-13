@@ -27,6 +27,9 @@
     <ClCompile Include="Validations.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Borrower.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h">
@@ -36,6 +39,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Validations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Borrower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
