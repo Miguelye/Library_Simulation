@@ -7,16 +7,7 @@ int Book::counter = 0;
 
 Book::Book()
 {
-	bookID = NULL;
-	++counter;
-	//static int i = 0;
-	//cout << "Book constructor invoked: " << ++i << " times" << endl;
-	cout << "Enter Title : " << endl;
-	cin >> title;
-	cout << "Enter Author : " << endl;
-	cin >> author;
-	cout << "Enter Year : " << endl;
-	cin >> year;
+
 }
 
 Book::Book(const Book& obj)
@@ -25,14 +16,17 @@ Book::Book(const Book& obj)
 	this->author = obj.author;
 	this->year   = obj.year;
 	++counter;
+
+	static int i = 0;
+	cout << "Copy Book constructor invoked: " << ++i << " times" << endl;
 }
 
 Book::Book(string title, string author, string year)
 {
 	bookID = NULL;
 	counter++;
-	//static int i = 0;
-	//cout << "Book constructor invoked: " << ++i << " times" << endl;
+	static int i = 0;
+	cout << "Book constructor invoked: " << ++i << " times" << endl;
 	this->title = title;
 	this->author = author;
 	this->year = year;
@@ -40,13 +34,17 @@ Book::Book(string title, string author, string year)
 
 Book::~Book()
 {
-	//static int i = 0;
-	//cout << "Book Destructor invoked: " << ++i << " times" << endl;
+	static int i = 0;
+	cout << "Book Destructor invoked: " << ++i << " times" << endl;
 }
 
 void Book::display() const
 {
-	cout << "Title: '" << title << "' Author: '" << author << "' Year: '" << year << "'" << " BookID: '" << bookID << "'" << endl;
+	cout << "Title: '" << title
+		 << "' Author: '" << author
+		 << "' Year: '" << year
+		 << "' BookID: '" << bookID
+		 << "'" << endl;
 	
 }
 

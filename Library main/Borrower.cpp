@@ -3,8 +3,8 @@
 Borrower::Borrower(string name, string lastName) : User(name, lastName)
 {
 	maxAmountOfBooks = 5;
-	currentAmountofBooks = -1;
-	this->pbooks = new const Book * [this->maxAmountOfBooks];
+	currentAmountofBooks = 0;
+	this->pbooks = new const Book [this->maxAmountOfBooks];
 }
 
 Borrower::~Borrower()
@@ -12,15 +12,54 @@ Borrower::~Borrower()
 	delete[] pbooks;
 }
 
-const Book* Borrower::getBook()
+const Book& Borrower::getBook()
 {
-	return this->pbooks[currentAmountofBooks];
+	if (currentAmountofBooks >= 0)
+	{
+		return pbooks[0];
+	}
+	else
+	{
+		cout << "No books availables." << endl;
+		return pbooks[0];
+	}
 }
-const Book* Borrower::getBook(int index)
+
+const Book& Borrower::getBook(int index)
 {
-	return this->pbooks[index];
+	while (!(Checker.IsValid("ERROR: Invalid input.")))
+	{
+		Borrower::showBooks();
+		cin >> index;
+	}
+
+	bool isBookValid = index > currentAmountofBooks - 1 || index < 0;
+
+	while (isBookValid)
+	{
+		system("cls");
+		Borrower::showBooks();
+		cout << "Error. out of range input" << endl;
+		cin >> index;
+		isBookValid = index > currentAmountofBooks - 1 || index < 0;
+	}
+	return pbooks[index];
 }
+
 void Borrower::showBooks()
 {
+	if (currentAmountofBooks == 0)
+	{
+		cout << "No books on hand" << endl;
+	}
+	else
+	{
+		cout << "The books on the Borrower's posetion are:" << endl << endl;
 
+		for (size_t i = 0; i < currentAmountofBooks; i++)
+		{
+			cout << "index: " << i << " - ";
+			(pbooks[i].display());
+		}
+	}
 }

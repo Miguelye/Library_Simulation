@@ -1,6 +1,6 @@
 #pragma once
 #include "Book.h"
-#include "validations.h"
+#include "Validations.h"
 
 class Library
 {
@@ -16,9 +16,9 @@ public:
 	void showBooks();
 
 private:
+	Validation Checker;
 	const Book** pbooks;
 	int currentAmountOfBooks;
 	int maxAmountOfBooks;
 	int bookChoice;
-	bool isValid(string);
 };

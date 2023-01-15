@@ -9,7 +9,7 @@ Library::Library()
 	this->bookChoice = -1;
 	this->currentAmountOfBooks = 0;
 	this->maxAmountOfBooks = 5;
-	this->pbooks = new const Book * [this->maxAmountOfBooks];
+	this->pbooks = new const Book* [this->maxAmountOfBooks];
 
 	//static int i = 0;
 	//cout << "Library Constructor invoked " << ++i << " times." << endl;
@@ -21,7 +21,7 @@ Library::Library(int maxAmountOfBooks)
 	this->bookChoice = -1;
 	this->currentAmountOfBooks = 0;
 	this->maxAmountOfBooks = maxAmountOfBooks;
-	this->pbooks = new const Book * [this->maxAmountOfBooks];
+	this->pbooks = new const Book* [this->maxAmountOfBooks];
 
 	//static int i = 0;
 	//cout << "Library Constructor invoked " << ++i << endl;
@@ -43,8 +43,8 @@ void Library::addBook(const Book* book)
 		return;
 	}
 	pbooks[currentAmountOfBooks] = book;
+	pbooks[currentAmountOfBooks]->bookID = currentAmountOfBooks + 1;
 	currentAmountOfBooks++;
-	book->bookID = currentAmountOfBooks;
 }
 
 const Book* Library::getBook()
@@ -56,25 +56,20 @@ const Book* Library::getBook()
 	else
 	{
 		cout << "No books availables." << endl;
-		return 0;
+		return nullptr;
 	}
 }
 
 const Book* Library::getBook(int index)
 {
-	while (!isValid("ERROR: Invalid input."))
-	{
-		Library::showBooks();
-		cin >> index;
-	}
-
 	bool isBookValid = index > currentAmountOfBooks - 1 || index < 0;
 
 	while (isBookValid)
 	{
 		system("cls");
 		Library::showBooks();
-		cout << "Error. out of range input" << endl;
+		cout << endl << "Error. out of range input" << endl;
+		cout << "Enter index again: " << endl;
 		cin >> index;
 		isBookValid = index > currentAmountOfBooks - 1 || index < 0;
 	}
@@ -98,17 +93,5 @@ void Library::showBooks()
 			(pbooks[i]->display());
 		}
 	}
-}
 
-bool Library::isValid(string errorMessage)
-{
-	if (cin.fail())
-	{
-		cin.clear();
-		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		system("cls");
-		cout << errorMessage << endl << endl;
-		return false;
-	}
-	return true;
 }

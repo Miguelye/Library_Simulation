@@ -1,7 +1,14 @@
 #pragma once
-
 #include <iostream>
+#include <limits>
 
 
-using namespace std;
 
+class Validation
+{
+public:
+	bool IsValid(std::string);
+
+private:
+
+};
