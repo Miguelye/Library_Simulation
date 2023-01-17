@@ -15,50 +15,56 @@ int const SIZE_OF_ARRAY_OF_BOOKS = 63;
 
 int main()
 {
+	//Objects Declaration
 	Validation Checker;
-
-
+	Borrower B1("Miguel", "Yepes");
 	Library library(100);
-	//bookCreation(library);
+
 	storeToLibrary(library);
 
-	cout << endl << endl;
-
-	//cout << "Address of original (after) b1: " << library1.getBook(1) << endl;
-	cout << &b1 << endl;
-	cout << endl << endl;
-
 	library.showBooks();
-	
-	Borrower B1("Miguel", "Yepes");
-	//Borrower B2("23", "23");
+	cout << "Welcome " << B1.getName() << " " << B1.getLastName() << endl;
 
-	cout << B1.getName() << endl;
-	cout << B1.getLastName() << endl;
-
-	while (true)
+	bool IsExitOrBook = false;
+	while (!IsExitOrBook)
 	{
-		cout << "Welcome" << B1.getName() << " " << B1.getLastName() << endl;
+		
 		cout << "Enter Q/q to exit or N/n to chose a book" << endl;
 		char input;
 		cin >> input;
 
-		if (input == 'Q' || input == 'q')
+		switch (input)
 		{
+		case 'Q':
+		case 'q':
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			return 0;
-		}
-		else if (input == 'N' || input == 'n')
-		{
+		case 'N':
+		case 'n':
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
+			IsExitOrBook = true;
 			break;
-		}
-		else
-		{
+		default:
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
 			cout << "Invalid input. Try again" << endl;
 		}
+
+		//if (input == 'Q' || input == 'q')
+		//{
+		//	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		//	return 0;
+		//}
+		//else if (input == 'N' || input == 'n')
+		//{
+		//	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		//	break;
+		//}
+		//else
+		//{
+		//	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		//	cout << "Invalid input. Try again" << endl;
+		//}
 	}
 
 	int index;

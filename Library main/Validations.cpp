@@ -13,3 +13,13 @@ bool Validation::IsValid(string errorMessage)
 	}
 	return true;
 }
+
+void Validation::ValBookIndex(int index)
+{
+
+}
+
+void Validation::ValExitOrBook(char input)
+{
+
+}
