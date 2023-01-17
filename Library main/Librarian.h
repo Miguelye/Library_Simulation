@@ -1,15 +1,16 @@
 #pragma once
-#include "Borrower.h"
 #include "Library.h"
+#include "Borrower.h"
 
 class Librarian : public Borrower
 {
 public:
 	Librarian(string, string);
 	~Librarian();
-	const Book* LendBook(Library&, Borrower&);
-	const Book* LendBook(Library&, Librarian&);
-
+	void lendBook(Library&, Borrower&, int&);
+	void lendBook(Library&, Librarian&, int&);
+	void returningBook(Library&, Borrower&, int&);
+	void returningBook(Library&, Librarian&, int&);
 
 private:
 

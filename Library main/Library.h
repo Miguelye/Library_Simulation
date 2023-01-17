@@ -1,6 +1,7 @@
 #pragma once
 #include "Book.h"
 #include "Validations.h"
+#include "Librarian.h"
 
 class Library
 {
@@ -9,11 +10,9 @@ public:
 	Library();
 	Library(int);
 	~Library();
-	void addBook(const Book*);
-	const Book* getBook();
-	const Book* getBook(int);
-	//Create overload function getBook(string) for Exit the program.
 	void showBooks();
+	void addBook(const Book*);
+	friend class Librarian;
 
 private:
 	Validation Checker;
@@ -21,6 +20,9 @@ private:
 	int currentAmountOfBooks;
 	int maxAmountOfBooks;
 	int bookChoice;
+	const Book* getBook();
+	const Book* getBook(int&);
 
-	friend class Librarian;
+
+	
 };

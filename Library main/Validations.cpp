@@ -8,7 +8,7 @@ bool Validation::IsValid(string errorMessage)
 	{
 		cin.clear();
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cout << errorMessage << endl << endl;
+		cout << errorMessage << endl;
 		return false;
 	}
 	return true;

@@ -25,7 +25,7 @@ const Book* Borrower::getBook()
 	}
 }
 
-const Book* Borrower::getBook(int index)
+const Book* Borrower::getBook(int& index)
 {
 	while (!(Checker.IsValid("ERROR: Invalid input.")))
 	{
@@ -48,18 +48,18 @@ const Book* Borrower::getBook(int index)
 
 void Borrower::showBooks()
 {
+	cout << "You currently have: " << endl << endl;
 	if (currentAmountofBooks == 0)
 	{
-		cout << "No books on hand" << endl;
+		cout << "No books on hand" << endl << endl;
 	}
 	else
 	{
-		cout << "The books on the Borrower's posetion are:" << endl << endl;
-
 		for (size_t i = 0; i < currentAmountofBooks; i++)
 		{
 			cout << "index: " << i << " - ";
 			(pbooks[i]->display());
 		}
+		cout << endl;
 	}
 }

@@ -4,83 +4,132 @@
 #include "Borrower.h"
 #include "ListofBooks.h"
 #include "Validations.h"
+#include "Librarian.h"
 
 using namespace std;
 
 // Fuctions
 void bookCreation(Library&);
 void storeToLibrary(Library&);
+void returningBook(Library&, Librarian&, Librarian&);
+void returningBook(Library&, Librarian&, Borrower&);
+
+
 // Global Variables
 int const SIZE_OF_ARRAY_OF_BOOKS = 63;
+
+//Global Objects
+Validation Checker;
 
 int main()
 {
 	//Objects Declaration
-	Validation Checker;
-	Borrower B1("Miguel", "Yepes");
-	Library library(100);
 
+	Library library(100);
+	Borrower B1("Miguel", "Yepes");
+	Librarian L1("Andres", "Rodriguez");
+	Librarian L2("Jesus", "MEX");
 	storeToLibrary(library);
 
-	library.showBooks();
-	cout << "Welcome " << B1.getName() << " " << B1.getLastName() << endl;
+	cout << L1.getName() << endl;
+	cout << L1.getLastName() << endl;
 
-	bool IsExitOrBook = false;
-	while (!IsExitOrBook)
+	while (true)
 	{
-		
-		cout << "Enter Q/q to exit or N/n to chose a book" << endl;
-		char input;
-		cin >> input;
+		cout << "Are you 1." << B1.getName() << " or 2." << L2.getName() << endl;
 
-		switch (input)
-		{
-		case 'Q':
-		case 'q':
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			return 0;
-		case 'N':
-		case 'n':
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			IsExitOrBook = true;
-			break;
-		default:
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cout << "Invalid input. Try again" << endl;
+		int BorrowerOrLibrarian;
+		bool isBorL = true;
+		while (isBorL)
+		{		
+			do
+			{
+				cout << "Enter 1 or 2." << endl;
+				cin >> BorrowerOrLibrarian;
+			} while (!Checker.IsValid("ERROR, INVALID INPUT"));
+
+			switch (BorrowerOrLibrarian)
+			{
+			case 1:
+				library.showBooks();
+				cout << "Welcome Borrower: " << B1.getName() << " " << B1.getLastName() << endl;
+				cout << "I'm the Librarian: " << L1.getName() << " " << L1.getLastName() << endl;
+				B1.showBooks();
+				isBorL = !isBorL;
+				break;
+			case 2:
+				library.showBooks();
+				cout << "Welcome Librarian: " << L2.getName() << " " << L2.getLastName() << endl;
+				cout << "I'm the Librarian: " << L1.getName() << " " << L1.getLastName() << endl;
+				L2.showBooks();
+				isBorL = !isBorL;
+				break;
+			default:
+				cout << "Invalid input. Try again" << endl;
+				break;
+			}
 		}
+		bool IsExitOrBook = false;
+		while (!IsExitOrBook)
+		{
+			cout << "Enter Q/q to exit or L/l to lend a book or R/r to return a book" << endl;
+			char input;
+			cin >> input;
+			int index;
 
-		//if (input == 'Q' || input == 'q')
-		//{
-		//	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		//	return 0;
-		//}
-		//else if (input == 'N' || input == 'n')
-		//{
-		//	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-		//	break;
-		//}
-		//else
-		//{
-		//	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		//	cout << "Invalid input. Try again" << endl;
-		//}
+			switch (input)
+			{
+			case 'Q':
+			case 'q':
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				return 0;
+			case 'L':
+			case 'l':
+				do
+				{
+					cout << "Enter book's index" << endl;
+					cin >> index;
+				} while (!Checker.IsValid("ERROR, INVALID INPUT"));
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				if (BorrowerOrLibrarian == 1)
+				{
+					L1.lendBook(library, B1, index);
+					B1.showBooks();
+				}
+				if (BorrowerOrLibrarian == 2)
+				{
+					L1.lendBook(library, L2, index);
+					L1.showBooks();
+				}
+					
+				IsExitOrBook = true;
+				break;
+			case 'R':
+			case 'r':
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				if (BorrowerOrLibrarian == 1)
+				{
+					L1.returningBook(library, B1, index);
+					B1.showBooks();
+				}
+					
+				if (BorrowerOrLibrarian == 2)
+				{
+					L1.returningBook(library, L1, index);
+					L1.showBooks();
+				}
+					
+				IsExitOrBook = true;
+				break;
+			default:
+				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				cout << "Invalid input. Try again" << endl;
+			}
+		}
 	}
+	
 
-	int index;
-
-	do
-	{
-		cout << "Enter book's index" << endl;
-		cin >> index;
-	} while (!Checker.IsValid("ERROR, INVALID INPUT"));
-
-	library.getBook(index)->display();
-
-	cout << library.getBook(index) << endl;
-
-
-
+	
 	//
 
 	//cout << Book::getCounter() << endl;
@@ -104,4 +153,13 @@ void storeToLibrary(Library& library)
 	library.addBook(&b7);	library.addBook(&b17);	library.addBook(&b28);	library.addBook(&b38);	library.addBook(&b48);	library.addBook(&b58);
 	library.addBook(&b9);	library.addBook(&b19);	library.addBook(&b29);	library.addBook(&b39);	library.addBook(&b49);	library.addBook(&b59);
 	library.addBook(&b10);	library.addBook(&b20);	library.addBook(&b30);	library.addBook(&b40);	library.addBook(&b50);	library.addBook(&b60);
+}
+
+void returningBook(Library&, Librarian&, Librarian&)
+{
+
+}
+void returningBook(Library&, Librarian&, Borrower&)
+{
+
 }

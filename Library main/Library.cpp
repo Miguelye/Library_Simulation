@@ -60,19 +60,21 @@ const Book* Library::getBook()
 	}
 }
 
-const Book* Library::getBook(int index)
+const Book* Library::getBook(int& index)
 {
 	bool isBookValid = index > currentAmountOfBooks - 1 || index < 0;
 
 	while (isBookValid)
 	{
-		system("cls");
-		Library::showBooks();
 		cout << endl << "Error. out of range input" << endl;
-		cout << "Enter index again: " << endl;
-		cin >> index;
+		do
+		{
+			cout << "Enter book's index" << endl;
+			cin >> index;
+		} while (!Checker.IsValid("ERROR, INVALID INPUT"));
 		isBookValid = index > currentAmountOfBooks - 1 || index < 0;
 	}
+
 	return pbooks[index];
 }
 
@@ -92,6 +94,6 @@ void Library::showBooks()
 			cout << "index: " << i << " - ";
 			(pbooks[i]->display());
 		}
+		cout << endl;
 	}
-
 }
