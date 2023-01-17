@@ -30,8 +30,15 @@ int main()
 
 	library.showBooks();
 	
+	Borrower B1("Miguel", "Yepes");
+	//Borrower B2("23", "23");
+
+	cout << B1.getName() << endl;
+	cout << B1.getLastName() << endl;
+
 	while (true)
 	{
+		cout << "Welcome" << B1.getName() << " " << B1.getLastName() << endl;
 		cout << "Enter Q/q to exit or N/n to chose a book" << endl;
 		char input;
 		cin >> input;
@@ -44,6 +51,7 @@ int main()
 		else if (input == 'N' || input == 'n')
 		{
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
 			break;
 		}
 		else
@@ -66,11 +74,7 @@ int main()
 	cout << library.getBook(index) << endl;
 
 
-	//Borrower B1("Miguel", "Yepes");
-	//Borrower B2("23", "23");
 
-	//cout << B1.getName() << endl;
-	//cout << B1.getLastName() << endl;
 	//
 
 	//cout << Book::getCounter() << endl;

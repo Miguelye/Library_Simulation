@@ -8,15 +8,15 @@ class Borrower : public User
 public:
 	Borrower(string, string);
 	~Borrower();
-	const Book& getBook();
-	const Book& getBook(int);
+	const Book* getBook();
+	const Book* getBook(int);
 	void showBooks();
 
 	Borrower(const Borrower&) = delete;
 	Borrower& operator= (const Borrower&) = delete;
 private:
 	Validation Checker;
-	const Book* pbooks;
+	const Book** pbooks;
 	int maxAmountOfBooks;
 	int currentAmountofBooks;
 };

@@ -21,4 +21,6 @@ private:
 	int currentAmountOfBooks;
 	int maxAmountOfBooks;
 	int bookChoice;
+
+	friend class Librarian;
 };

@@ -33,6 +33,9 @@
     <ClCompile Include="Validations.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Librarian.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ListOfBooks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Librarian.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

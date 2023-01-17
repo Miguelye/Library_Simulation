@@ -4,7 +4,7 @@ Borrower::Borrower(string name, string lastName) : User(name, lastName)
 {
 	maxAmountOfBooks = 5;
 	currentAmountofBooks = 0;
-	this->pbooks = new const Book [this->maxAmountOfBooks];
+	this->pbooks = new const Book* [this->maxAmountOfBooks];
 }
 
 Borrower::~Borrower()
@@ -12,7 +12,7 @@ Borrower::~Borrower()
 	delete[] pbooks;
 }
 
-const Book& Borrower::getBook()
+const Book* Borrower::getBook()
 {
 	if (currentAmountofBooks >= 0)
 	{
@@ -25,7 +25,7 @@ const Book& Borrower::getBook()
 	}
 }
 
-const Book& Borrower::getBook(int index)
+const Book* Borrower::getBook(int index)
 {
 	while (!(Checker.IsValid("ERROR: Invalid input.")))
 	{
@@ -59,7 +59,7 @@ void Borrower::showBooks()
 		for (size_t i = 0; i < currentAmountofBooks; i++)
 		{
 			cout << "index: " << i << " - ";
-			(pbooks[i].display());
+			(pbooks[i]->display());
 		}
 	}
 }
