@@ -32,9 +32,6 @@ int main()
 	Librarian L2("Jesus", "MEX");
 	storeToLibrary(library);
 
-	cout << L1.getName() << endl;
-	cout << L1.getLastName() << endl;
-
 	while (true)
 	{
 		cout << "Are you 1." << B1.getName() << " or 2." << L2.getName() << endl;
@@ -104,7 +101,7 @@ int main()
 				if (BorrowerOrLibrarian == 2)
 				{
 					L1.lendBook(library, L2, index);
-					L1.showBooks();
+					L2.showBooks();
 				}
 					
 				IsExitOrBook = true;
