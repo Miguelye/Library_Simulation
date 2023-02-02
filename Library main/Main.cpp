@@ -5,6 +5,7 @@
 #include "ListofBooks.h"
 #include "Validations.h"
 #include "Librarian.h"
+#include <conio.h>
 
 using namespace std;
 
@@ -45,7 +46,8 @@ int main()
 			do
 			{
 				cout << "Enter 1 or 2." << endl;
-				cin >> BorrowerOrLibrarian;
+				//cin >> BorrowerOrLibrarian;
+				BorrowerOrLibrarian = (int)_getch() -'0';
 			} while (!Checker.IsValid("ERROR, INVALID INPUT"));
 
 			switch (BorrowerOrLibrarian)
@@ -70,18 +72,20 @@ int main()
 			}
 		}
 		bool IsExitOrBook = false;
+		char input;
+		int index;
 		while (!IsExitOrBook)
 		{
 			cout << "Enter Q/q to exit or L/l to lend a book or R/r to return a book" << endl;
-			char input;
-			cin >> input;
-			int index;
+			//cin >> input;
+			input = _getch();
+
 
 			switch (input)
 			{
 			case 'Q':
 			case 'q':
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				//cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				return 0;
 			case 'L':
 			case 'l':
@@ -89,6 +93,7 @@ int main()
 				{
 					cout << "Enter book's index" << endl;
 					cin >> index;
+					//index = (int)_getch() - '0';
 				} while (!Checker.IsValid("ERROR, INVALID INPUT"));
 				cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				if (BorrowerOrLibrarian == 1)
@@ -106,7 +111,7 @@ int main()
 				break;
 			case 'R':
 			case 'r':
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				//cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				if (BorrowerOrLibrarian == 1)
 				{
 					L1.returningBook(library, B1, index);
@@ -122,7 +127,7 @@ int main()
 				IsExitOrBook = true;
 				break;
 			default:
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
+				//cin.ignore(numeric_limits<streamsize>::max(), '\n');
 				cout << "Invalid input. Try again" << endl;
 			}
 		}
