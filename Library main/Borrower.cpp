@@ -58,7 +58,8 @@ void Borrower::showBooks()
 		for (size_t i = 0; i < currentAmountofBooks; i++)
 		{
 			cout << "index: " << i << " - ";
-			(pbooks[i]->display());
+			//(pbooks[i]->display());
+			cout << *pbooks[i];
 		}
 		cout << endl;
 	}

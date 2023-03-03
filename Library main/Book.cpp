@@ -38,15 +38,15 @@ Book::~Book()
 	//cout << "Book Destructor invoked: " << ++i << " times" << endl;
 }
 
-void Book::display() const
-{
-	cout << "Title: '" << title
-		 << "' Author: '" << author
-		 << "' Year: '" << year
-		 << "' BookID: '" << bookID
-		 << "'" << endl;
-	
-}
+//void Book::display() const
+//{
+//	cout << "Title: '" << title
+//		 << "' Author: '" << author
+//		 << "' Year: '" << year
+//		 << "' BookID: '" << bookID
+//		 << "'" << endl;
+//	
+//}
 
 int Book::getBookID() const
 {

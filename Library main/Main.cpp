@@ -157,11 +157,12 @@ void storeToLibrary(Library& library)
 	library.addBook(&b10);	library.addBook(&b20);	library.addBook(&b30);	library.addBook(&b40);	library.addBook(&b50);	library.addBook(&b60);
 }
 
-void returningBook(Library&, Librarian&, Librarian&)
+ostream& operator<<(ostream& stream, const Book& book)
 {
-
-}
-void returningBook(Library&, Librarian&, Borrower&)
-{
-
+	stream << "Title: '" << book.title
+		<< "' Author: '" << book.author
+		<< "' Year: '" << book.year
+		<< "' BookID: '" << book.bookID
+		<< "'" << endl;
+	return stream;
 }

@@ -92,7 +92,7 @@ void Library::showBooks()
 		for (size_t i = 0; i < currentAmountOfBooks; i++)
 		{
 			cout << "index: " << i << " - ";
-			(pbooks[i]->display());
+			cout << *pbooks[i];
 		}
 		cout << endl;
 	}

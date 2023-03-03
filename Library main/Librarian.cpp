@@ -17,8 +17,9 @@ void Librarian::lendBook(Library& library, Borrower& borrower, int& index)
 	}
 	else
 	{
-		library.getBook(index)->display();
+		//library.getBook(index)->display();
 		cout << "Thank you for choosing: " << endl;
+		cout << *library.getBook(index);
 		borrower.pbooks[borrower.currentAmountofBooks] = library.getBook(index);
 		borrower.currentAmountofBooks++;
 		library.currentAmountOfBooks--;
@@ -40,7 +41,7 @@ void Librarian::lendBook(Library& library, Librarian& librarian, int& index)
 	else
 	{
 		cout << "Thank you for choosing: " << endl;
-		library.getBook(index)->display();
+		cout << *library.getBook(index);
 		librarian.pbooks[librarian.currentAmountofBooks] = library.getBook(index);
 		librarian.currentAmountofBooks++;
 		library.currentAmountOfBooks--;
@@ -67,7 +68,7 @@ void Librarian::returningBook(Library& library, Borrower& borrower, int& index)
 			cin >> index;
 		} while (!Checker.IsValid("ERROR, INVALID INPUT"));
 
-		borrower.getBook(index)->display();
+		cout << *borrower.getBook(index);
 		cout << "Thank you for returning!" << endl;
 		library.pbooks[library.currentAmountOfBooks] = borrower.getBook(index);
 		borrower.currentAmountofBooks--;
@@ -95,7 +96,7 @@ void Librarian::returningBook(Library& library, Librarian& librarian, int& index
 		} while (!Checker.IsValid("ERROR, INVALID INPUT"));
 
 		cout << "Thank you for returning: " << endl;
-		librarian.getBook(index)->display();
+		cout << *librarian.getBook(index);
 		library.pbooks[library.currentAmountOfBooks] = librarian.getBook(index);
 		librarian.currentAmountofBooks--;
 		library.currentAmountOfBooks++;
